@@ -1,3 +1,11 @@
-bridge.setConfig("title_color", -65536);      // 0xFFFF0000 = Red
-bridge.setConfig("description_visible", false); // Hide description
-bridge.log("Patch applied: title=red, description=hidden");
+bridge.override(
+    "in.stage.presentation.preview.SharedContentPreviewViewModel",
+    "getTitleColor()J",
+    function(args) { return -65536; } // 0xFFFF0000 = Red
+);
+
+bridge.override(
+    "in.stage.presentation.preview.SharedContentPreviewViewModel",
+    "isDescriptionVisible()Z",
+    function(args) { return false; }
+);
