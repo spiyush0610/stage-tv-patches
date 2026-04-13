@@ -1,8 +1,15 @@
 bridge.override(
-    "in.stage.presentation.dynamicHome.viewModels.DynamicHomeViewModel",
-    "getHomeScreenLabel()Ljava/lang/String;",
+    "in.stage.presentation.preview.SharedContentPreviewViewModel",
+    "getTitleColor()J",
     function(args) {
-        bridge.log("OTA PATCH APPLIED — getHomeScreenLabel intercepted!");
-        return "PATCHED LABEL!";
+        return -65536; // 0xFFFF0000 = Red (ARGB)
+    }
+);
+
+bridge.override(
+    "in.stage.presentation.preview.SharedContentPreviewViewModel",
+    "isDescriptionVisible()Z",
+    function(args) {
+        return false;
     }
 );
